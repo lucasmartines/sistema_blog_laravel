@@ -15,8 +15,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="./bootstrap.min.css" rel="stylesheet">
-    <link href="./main.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('bootstrap.min.css') }} "rel="stylesheet">
+    <link href="{{ URL::asset('main.min.css') }} " rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,11 +31,38 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+               
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                     @if(Auth::user())
+                        @if( Auth::user()->roles->pluck('name')->contains('admin') )
+                        
+                            <a href="{{route('dashboard')}}" class="nav-link">
+                                Admin
+                            </a>
+                        
+                            <li class="nav-item">
+                                <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Roles</a>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a class="dropdown-item" href="/roles">Ver Roles</a>
+                                        <a class="dropdown-item" href="/roles/create">Criar</a>
+                                    </div>
+                                </li>
+                            </li>
+                        @endif
+                    @endif
+                        <li class="nav-item">
+                            <li class="nav-item">
+                                <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a class="dropdown-item" href="/users">Ver Usuarios</a>
+                                    </div>
+                                </li>
+                            </li>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,6 +77,11 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                            @if( Auth::user()->roles->pluck('name')->contains('admin') )
+                                <a href="{{route('dashboard')}}" class="dropdown-item">
+                                    Admin
+                                </a>
+                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -62,7 +94,11 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    @if( Auth::user()->roles->pluck('name')->contains('admin') )
+                                        <a href="{{route('dashboard')}}" class="dropdown-item">
+                                            Admin
+                                        </a>
+                                    @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

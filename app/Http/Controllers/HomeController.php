@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function home(){
+        return view('user');
+    }
+    public function admin(){
+        return view('admin.admin');
+    }
+    public function permisionDenied(){
+        return view('nopermision');
+    }
 }
