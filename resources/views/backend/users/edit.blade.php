@@ -44,7 +44,7 @@
                         <label for="password" class="col-lg-2">
                             Senha
                         </label>
-                        <div class="col-lg-10">
+                        <div class="col-lg-5">
                             <input type="password" class="form-control" id="password" name="password"  >
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <label for="password" class="col-lg-2">
                             Confirmar Senha
                         </label>
-                        <div class="col-lg-10">
+                        <div class="col-lg-5">
                             <input type="password" class="form-control" id="password" name="password_confirmation"  >
                         </div>
                     </div>
@@ -62,7 +62,7 @@
             </fieldset>
 
         </form>
-          <div  action="" class="  form-group">
+          <div   class="form-group">
                 <label class="col-lg-2 ">
                     Role
                 </label>
@@ -86,13 +86,17 @@
        
             <input type="hidden" name="user_id" value="{!! $user->id !!}">
             {!! csrf_field() !!}
-            <select class="form-control col-lg-4 mx-4 " name="role_id">
-                @foreach( $roles as $role)
-                    <option  value="{{$role->id}}">
-                        {{$role->name}}
-                    </option>
-                @endforeach
-            </select>
+            <div class="form-group">
+                <div class="col-lg-4">
+                    <select class="form-control " name="role_id">
+                        @foreach( $roles as $role)
+                            <option  value="{{$role->id}}">
+                                {{$role->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <button method="submit" class="btn btn-primary mx-4 my-2 btn-sm">Adicionar Role</button>
         </form>
     </div>

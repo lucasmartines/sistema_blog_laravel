@@ -1,3 +1,7 @@
 .weel , .shadow{
     box-shadow: 3px 3px 3px rgba(31, 31, 31, 0.918);
 }
+li,ul{
+    list-style: none;
+    text-decoration: none;
+}

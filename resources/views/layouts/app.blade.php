@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ URL::asset('bootstrap.min.css') }} "rel="stylesheet">
     <link href="{{ URL::asset('main.min.css') }} " rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.css" integrity="sha256-lWpJZLAHZOCURVO4tz/qd18kGxO18N90hFgDF49utEg=" crossorigin="anonymous" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -51,18 +51,19 @@
                                     </div>
                                 </li>
                             </li>
-                        @endif
-                    @endif
-                        <li class="nav-item">
                             <li class="nav-item">
-                                <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
-                                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <a class="dropdown-item" href="/users">Ver Usuarios</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <a class="dropdown-item" href="/users">Ver Usuarios</a>
+                                        </div>
+                                    </li>
                                 </li>
                             </li>
-                        </li>
+                        @endif
+                    @endif
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,10 +78,12 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                            @if( Auth::user()->roles->pluck('name')->contains('admin') )
-                                <a href="{{route('dashboard')}}" class="dropdown-item">
-                                    Admin
-                                </a>
+                            @if(Auth::user())
+                                @if( Auth::user()->roles->pluck('name')->contains('admin') )
+                                    <a href="{{route('dashboard')}}" class="dropdown-item">
+                                        Admin
+                                    </a>
+                                @endif
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -94,10 +97,12 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    @if( Auth::user()->roles->pluck('name')->contains('admin') )
-                                        <a href="{{route('dashboard')}}" class="dropdown-item">
+                                    @if(Auth::user())
+                                         @if( Auth::user()->roles->pluck('name')->contains('admin') )
+                                         <a href="{{route('dashboard')}}" class="dropdown-item">
                                             Admin
                                         </a>
+                                         @endif
                                     @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
