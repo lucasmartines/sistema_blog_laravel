@@ -5,9 +5,9 @@
 @section('content')
 <div class="container col-md-8">
     <div class="shadow p-3">
-        <h1> {{$post->title}}</h1>
+        <h1 class="text-center"> {{$post->title}}</h1>
         <hr>
-        <p class="blog_text  mx-auto" style="max-width:450px">
+        <p class="blog_text  mx-auto" style="max-width:550px;font-size:1.2em;line-height:1.7em">
             {{$post->content}}
         </p>
 

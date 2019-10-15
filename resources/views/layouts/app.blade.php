@@ -37,9 +37,7 @@
                     <ul class="navbar-nav mr-auto">
                      @if(Auth::user())
                         @if( Auth::user()->roles->pluck('name')->contains('admin') )
-                            <a href="{{route('blog')}}" class="nav-link">
-                                Blog
-                            </a>
+                            
 
                             <a href="{{route('dashboard')}}" class="nav-link">
                                 Admin
@@ -47,7 +45,9 @@
                            
                         @endif
                     @endif
-                        
+                    <a href="{{route('blog')}}" class="nav-link">
+                        Blog
+                    </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

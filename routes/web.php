@@ -21,6 +21,10 @@ Route::get('/', function(){
 
 Route::get('/user', 'HomeController@index');
 
+/**ROTAS blog */
+Route::get('/blog','BlogController@index')->name("blog");
+Route::get('/blog/{slug?}','BlogController@show');
+
 
 Route::group(['middleware'=>['auth']],function(){
     
@@ -75,9 +79,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('categories/create','Admin\CategoriesController@create');
         Route::post('categories/create','Admin\CategoriesController@store');
 
-
-        Route::get('/blog','BlogController@index')->name("blog");
-        Route::get('/blog/{slug?}','BlogController@show');
+        
     });
 
 
