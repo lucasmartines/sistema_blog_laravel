@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Http\Requests\PostFormRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostEditFormRequest;
+
+use App\Post;
+use App\Category;
+
+class PostsController extends Controller
+{
+    //
+    public function index(){
+      
+        $posts = Post::all();
+
+        return view('backend.posts.index',compact('posts'));
+     
+    }
+    public function create(){
+
+        $categories = Category::all();
+        return view('backend.posts.create',compact('categories'));
+    }
+    public function store( PostFormRequest $request ){
+
+        $post = new Post(
+            array(
+                'title'=>$request->get('title'),
+                'content'=>$request->get('content'),
+                'slug'=> Str::slug($request->get('title','-')),
+                'user_id'=> Auth::id()
+            )
+        );
+
+        $post->save();
+        $post->categories()->sync($request->get('categories'));
+
+        return redirect('/posts/create')->with('status','O post foi criado com sucesso');
+    }
+    public function edit($id){
+        $post = Post::whereId($id)->firstOrFail();
+
+        $categories = Category::all();
+        //dd($post->categories)-lists('id');
+
+        if( isset( $post->categories->lists  ) )
+        {
+            $selectedCategories = $post->categories->lists('id')->toArray();
+           // return view('backend.posts.edit',compact('post','categories','selectedCategories'));
+
+        }
+        else{
+            $selectedCategories = [];
+        }
+        return view('backend.posts.edit',compact('post','categories','selectedCategories'));
+    }
+    public function update($id,PostEditFormRequest $request){
+        $post = Post::whereId($id)->firstOrFail();
+        $post->title = $request->get('title');
+        $post->content = $request->get('content');
+        $post->slug = Str::slug($request->get('title','-'));
+
+        $post->save();
+        $post->categories()->sync($request->get('categories'));
+
+        return redirect(action('Admin\PostsController@edit',$post->id))
+            ->with('status',"Postagem atualizada");
+
+    }
+}

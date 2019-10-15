@@ -30,8 +30,16 @@
                             <i style="float:left"> <span class="mdi mdi-48px mdi-lead-pencil px-2"></span></i>                            
                             <div>
                                 <h2> Gerenciar Posts</h2>
-                                <a class="btn btn-primary" href="#">Ver Posts</a>
-                                <a class="btn btn-success" href="#">Criar</a>
+                                <a class="btn btn-primary" href="/posts">Ver Posts</a>
+                                <a class="btn btn-success" href="/posts/create">Criar</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i style="float:left"> <span class="mdi mdi-48px mdi-directions px-2"></span></i>                            
+                            <div>
+                                <h2> Gerenciar Categorias</h2>
+                                <a class="btn btn-primary" href="/categories">Ver Categorias</a>
+                                <a class="btn btn-success" href="/categories/create">Criar</a>
                             </div>
                         </li>
                     </ul>
