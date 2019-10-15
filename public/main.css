@@ -5,3 +5,7 @@ li,ul{
     list-style: none;
     text-decoration: none;
 }
+.blog_text{
+    line-height: 1.8;
+  
+}

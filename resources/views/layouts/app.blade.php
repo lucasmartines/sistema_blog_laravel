@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ URL::asset('bootstrap.min.css') }} "rel="stylesheet">
-    <link href="{{ URL::asset('main.min.css') }} " rel="stylesheet">
+    <link href="{{ URL::asset('main.css') }} " rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.css" integrity="sha256-lWpJZLAHZOCURVO4tz/qd18kGxO18N90hFgDF49utEg=" crossorigin="anonymous" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
