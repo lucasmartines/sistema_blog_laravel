@@ -11,6 +11,8 @@ use App\Http\Requests\PostEditFormRequest;
 
 use App\Post;
 use App\Category;
+use App\Image;
+
 
 class PostsController extends Controller
 {
@@ -18,7 +20,7 @@ class PostsController extends Controller
     public function index(){
       
         $posts = Post::all();
-
+        
         return view('backend.posts.index',compact('posts'));
      
     }
@@ -38,12 +40,32 @@ class PostsController extends Controller
             )
         );
 
+        $img_name = $request->image->getClientOriginalName();
+        $img_url = "images\\".$request->image->getClientOriginalName();
+        
+        $file = $request->image->storeAs('images', $img_name);
+
+
         $post->save();
+
+        $image= new Image(
+            array(
+                'name' => $img_name,
+                'url' => $img_url,
+            )
+        );
+
+        $post->image()->save($image);
+
+       
+
+
         $post->categories()->sync($request->get('categories'));
 
         return redirect('/posts/create')->with('status','O post foi criado com sucesso');
     }
     public function edit($id){
+
         $post = Post::whereId($id)->firstOrFail();
 
         $categories = Category::all();

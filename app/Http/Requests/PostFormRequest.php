@@ -26,7 +26,8 @@ class PostFormRequest extends FormRequest
         return [
             'title'=>'required',
             'content'=>'required',
-            'categories'=>'required'
+            'categories'=>'required',
+             
         ];
     }
 }

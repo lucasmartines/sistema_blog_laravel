@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Image;
+
 
 class BlogController extends Controller
 {
@@ -14,7 +16,8 @@ class BlogController extends Controller
     }
     public function show($slug){
         $post = Post::whereSlug($slug)->firstOrFail();
-
-        return view('blog.show',compact('post'));
+        $image = $post->image;
+        //dd($image);
+        return view('blog.show',compact('post','image'));
     }
 }

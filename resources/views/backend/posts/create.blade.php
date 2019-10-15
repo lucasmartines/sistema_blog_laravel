@@ -5,7 +5,7 @@
 @section('content')
 <div class="container col-md-8">
 <div class="shadow p-3">
-    <form method="post">
+    <form method="post" enctype='multipart/form-data'>
         @foreach($errors->all() as $error)
             <p class="alert alert-danger">{{$error}}</p>
         @endforeach
@@ -17,7 +17,7 @@
 
         @csrf
         <fieldset>
-            <legend> Editar novo Post </legend>
+            <legend> Criar novo Post </legend>
             <div class="form-group">
                 <label for="email" class="">Titulo</label>
 
@@ -50,7 +50,14 @@
                     </select>
                 </div>
             </div>
-            
+            <div class="form-group">
+                <label for="category" class="">Url Imagem</label>
+                <input type="file" 
+                       class="form-control"
+                       name="image"
+                       file-accept="jpg, jpeg, png, gif" 
+                       file-maxsize="1999">
+            </div>
             <div class="form-group">
                 <div class="col-lg-10">
                     <button type="reset" 

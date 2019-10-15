@@ -3,8 +3,15 @@
 
 
 @section('content')
+<div class="w-100" style="height:300px;overflow:hidden;">
+@if($image)
+    <img src="{{asset('/storage/'.$image->url)}}" alt="" style="width:100%;">
+@endif
+</div>
 <div class="container col-md-8">
     <div class="shadow p-3">
+
+        
         <h1 class="text-center"> {{$post->title}}</h1>
         <hr>
         <p class="blog_text  mx-auto" style="max-width:550px;font-size:1.2em;line-height:1.7em">

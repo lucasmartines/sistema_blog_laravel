@@ -14,4 +14,7 @@ class Post extends Model
     public function categories(){
         return $this->belongsToMany('App\Category')->withTimestamps();
     }
+    public function image(){
+        return $this->hasOne('App\Image');
+    }
 }
