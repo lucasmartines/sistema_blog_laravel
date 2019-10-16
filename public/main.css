@@ -15,6 +15,27 @@ li,ul{
     align-items: center;
     overflow: hidden;
 }
+
+.img_blog_posts
+{
+    width:260px;
+    
+}
+@media(min-width:471px ),(  max-width:780){
+    .img_blog_posts
+    {
+        width:180px;
+        
+    }
+}
+@media(max-width:470px){
+    .img_blog_posts
+    {
+        width:100%;
+        
+    }
+}
+/*imagens para a pagina da postagem do blog*/
 .img_post_container_size_sm{
     max-height: 160px;
 }

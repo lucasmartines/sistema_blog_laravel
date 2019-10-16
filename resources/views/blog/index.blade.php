@@ -19,11 +19,11 @@
                 <div class="card m-2">
                     <div class="card-body d-flex ">
                         <div class="row">
-                            <div class="col-xl-3 col-sm-12 col-12 img_post_container img_post_container_size_sm">
-                                <img class="img_post" src="{{asset('/storage/'.$post->image->url)}} "  alt="">
+                            <div class="img_blog_posts">
+                                <img class="img_post img_blog_posts" src="{{asset('/storage/'.$post->image->url)}} "  alt="">
                             </div>
                             
-                            <div class="col-xl-9 col-sm-12 col-12">
+                            <div class="col">
                                 <h3>
                                 <a href="{{action('BlogController@show',$post->slug)}}">{{$post->title}}</a></h3>
                                 <p>{{mb_substr($post->content,0,300)}}</p>
