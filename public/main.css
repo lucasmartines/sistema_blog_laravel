@@ -9,7 +9,25 @@ li,ul{
     line-height: 1.8;
   
 }
+.img_post_container{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
+}
+.img_post_container_size_sm{
+    max-height: 160px;
+}
+.img_post_container_size_md{
+    max-height: 260px;
+}
+.img_post_container_size_lg{
+    max-height: 460px;
+}
 
 .img_post{
-    width:128px;
+    width:100%;
+}
+main .container{
+    padding-top: 60px;
 }

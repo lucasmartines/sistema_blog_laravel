@@ -5,7 +5,10 @@
 @section('content')
 <div class="w-100" style="height:300px;overflow:hidden;">
 @if($image)
-    <img src="{{asset('/storage/'.$image->url)}}" alt="" style="width:100%;">
+<div  class="img_post_container img_post_container_size_md" >
+    <img class=" img_post "
+         src="{{asset('/storage/'.$image->url)}}" alt=""  >
+</div>
 @endif
 </div>
 <div class="container col-md-8">
