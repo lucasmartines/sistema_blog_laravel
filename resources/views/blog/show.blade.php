@@ -26,6 +26,7 @@
 
 
 <!-- formulario comentario -->
+@if( Auth::user() )
 <div class="container col-md-8 ">
     <form action="/coment" method="post" class="shadow p-3 ">
         @foreach($errors->all() as $error)
@@ -68,6 +69,12 @@
     </form>
 
 </div>
+@else
+<div class="container col-md-8">
+    <h3> Faça o  <a href="{{url('login')}}">Login</a> para comentar!</h3>
+   
+</div>
+@endif
 <!-- comentarios -->
 <div class="container col-md-8">
     <div class="  p-3">
