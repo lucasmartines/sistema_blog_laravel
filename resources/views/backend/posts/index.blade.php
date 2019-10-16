@@ -19,8 +19,8 @@
                     <th>Id</th>
                     <th>Titulo</th>
                     <th>Slug</th>
-                    <th>Create At</th>
-                    <th>Update At</th>
+                    <th>Atualização</th>
+                    <th>Ação</th>
                 </tr>
                 <tbody>
                     @foreach($posts as $post)
@@ -29,18 +29,30 @@
                                 {{ $post->id}}
                             </td>
                             <td>
-                                <a href="{{action('Admin\PostsController@edit',$post->id)}}">
+                                <a href="{{action('BlogController@show',$post->slug)}}">
                                     {{ $post->title}}
                                 </a>
                             </td>
                             <td>
                                 {{$post->slug}}
                             </td>
-                            <td>
-                                {{$post->create_at}}
-                            </td>
+                            
                             <td>
                                 {{$post->updated_at}}
+                            </td>
+                            <td>
+                                <form method="post" action="{{action('Admin\PostsController@delete',$post->id)}}" class="d-inline">
+                                    @csrf
+                                <button  
+                                   class="btn btn-danger"
+                                   type="submit"
+                                   >Del</button>
+                                </form>
+                                <a  
+                                    class="btn btn-info"
+                                    href="{{action('Admin\PostsController@edit',$post->id)}}">
+                                    Update
+                                </a>
                             </td>
                         </tr>
                     @endforeach

@@ -21,7 +21,7 @@
                         <li class="d-flex">
                             <i  > <span class="mdi mdi-48px mdi-account-key px-2"></span></i>
                               <div>
-                                  <h4> Gerenciar Roles</h4>
+                                  <h4> Gerenciar Roles de Usuario</h4>
                                   <a class="btn btn-primary" href="/roles">Ver Roles</a>
                                   <a class="btn btn-success" href="/roles/create">Criar</a>
                               </div>

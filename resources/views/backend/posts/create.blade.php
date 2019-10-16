@@ -34,6 +34,7 @@
                     </textarea>
                 </div>
             </div>
+            <!-- categorias -->
             <div class="form-group">
                 <label for="category" class="">Categorias</label>
 
@@ -50,6 +51,7 @@
                     </select>
                 </div>
             </div>
+            <!-- arquivo -->
             <div class="form-group">
                 <label for="category" class="">Url Imagem</label>
                 <input type="file" 

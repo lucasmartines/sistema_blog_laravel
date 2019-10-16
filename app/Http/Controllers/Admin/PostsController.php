@@ -40,20 +40,19 @@ class PostsController extends Controller
             )
         );
 
+
+
         $img_name = $request->image->getClientOriginalName();
         $img_url = "images\\".$request->image->getClientOriginalName();
-        
         $file = $request->image->storeAs('images', $img_name);
-
-
         $post->save();
-
         $image= new Image(
             array(
                 'name' => $img_name,
                 'url' => $img_url,
             )
         );
+
 
         $post->image()->save($image);
 
@@ -93,6 +92,13 @@ class PostsController extends Controller
 
         return redirect(action('Admin\PostsController@edit',$post->id))
             ->with('status',"Postagem atualizada");
+
+    }
+    public function delete($id){
+        
+       Post::destroy($id);
+        //dd($id);
+        return redirect(url('posts'))->with('status',"post $id deletado com sucesso");
 
     }
 }

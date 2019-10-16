@@ -18,7 +18,13 @@ class CreateImagesTable extends Migration
             $table->string('url');
             $table->string('name')->nullable(); 
             $table->integer('post_id')->nullable(); 
-            $table->foreign('post_id')->references('id')->on('posts');
+
+            $table->foreign('post_id')
+                    ->references('id')
+                    ->on('posts')
+                    ->onDelete('cascade');
+
+                    
             $table->timestamps();
         });
     }

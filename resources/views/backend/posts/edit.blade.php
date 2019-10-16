@@ -34,6 +34,7 @@
                     </textarea>
                 </div>
             </div>
+            <!-- modificar categorias -->
             <div class="form-group">
                 <label for="category" class="">Categorias</label>
 
@@ -53,7 +54,15 @@
                     </select>
                 </div>
             </div>
-            
+            <!-- imagem -->
+            <div class="form-group">
+                <label for="category" class="">Url Imagem</label>
+                <input type="file" 
+                       class="form-control"
+                       name="image"
+                       file-accept="jpg, jpeg, png, gif" 
+                       file-maxsize="1999">
+            </div>
             <div class="form-group">
                 <div class="col-lg-10">
                     <button type="reset" 

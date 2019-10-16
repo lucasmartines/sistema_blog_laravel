@@ -70,7 +70,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('posts/create','Admin\PostsController@store');
         Route::get('posts/{id?}/edit','Admin\PostsController@edit');
         Route::post('posts/{id?}/edit','Admin\PostsController@update');
-
+        Route::post('posts/{id?}/delete','Admin\PostsController@delete');
 
         /**ROTAS categories */
         Route::get('categories','Admin\CategoriesController@index');
