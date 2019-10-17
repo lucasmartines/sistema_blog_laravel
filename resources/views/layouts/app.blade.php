@@ -63,7 +63,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                            @if(Auth::user())
+                            @if(Auth::check())
                                 @if( Auth::user()->roles->pluck('name')->contains('admin') )
                                     <a href="{{route('dashboard')}}" class="dropdown-item">
                                         Admin

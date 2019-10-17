@@ -61,4 +61,8 @@ class RolesController extends Controller
 
         return back()->with('status','Removido role para usuario atual');
     }
+    public function removeRole($role_id){
+        //
+        
+    }
 }
