@@ -13,7 +13,7 @@
 </div>
 <div class="container col-md-8">
     <div class="shadow p-3">
-
+    <a href="{{action('BlogController@index')}}">Voltar</a>
         
         <h1 class="text-center"> {{$post->title}}</h1>
         <hr>
