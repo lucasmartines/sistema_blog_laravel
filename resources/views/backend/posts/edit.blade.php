@@ -5,7 +5,7 @@
 @section('content')
 <div class="container col-md-8">
 <div class="shadow p-3">
-    <form method="post">
+    <form method="post" enctype='multipart/form-data'>
         @foreach($errors->all() as $error)
             <p class="alert alert-danger">{{$error}}</p>
         @endforeach
@@ -22,15 +22,18 @@
                 <label for="email" class="">Titulo</label>
 
                 <div class="col-md-6  p-0">
-                    <input value="{{ $post->title }}" id="email" class="form-control" name="title" >
+                    <input value="{{ $post->title }}" id="email" class="form-control" name="title"  value="{{ old('title') }}  >
                 </div>
             </div>
             <div class="form-group">
                 <label for="content" class="">Conteudo</label>
 
                 <div class="col-md-12  p-0">
-                    <textarea id="content"   class="form-control" row="3" name="content" >
+                    <textarea id="content"   class="form-control" row="3" name="content"  >
                        {{$post->content}}
+                       @if( !isset($post->content))
+                            {{ old('content') }}
+                       @endif
                     </textarea>
                 </div>
             </div>
@@ -55,6 +58,11 @@
                 </div>
             </div>
             <!-- imagem -->
+
+            <div>
+                <img src="{{url('storage/'.$image->url)}}" style="width:25%" alt=""><br>
+                <span>imagem antiga postada</span>
+            </div>
             <div class="form-group">
                 <label for="category" class="">Url Imagem</label>
                 <input type="file" 

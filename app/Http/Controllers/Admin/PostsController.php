@@ -52,8 +52,6 @@ class PostsController extends Controller
                 'url' => $img_url,
             )
         );
-
-
         $post->image()->save($image);
 
        
@@ -68,7 +66,15 @@ class PostsController extends Controller
         $post = Post::whereId($id)->firstOrFail();
 
         $categories = Category::all();
-        //dd($post->categories)-lists('id');
+
+        
+
+        
+        /** tenho que implementar o img url */
+        //$image = Image::where($post->post_id)->get();
+        $image = $post->image;
+
+        
 
         if( isset( $post->categories->lists  ) )
         {
@@ -79,15 +85,35 @@ class PostsController extends Controller
         else{
             $selectedCategories = [];
         }
-        return view('backend.posts.edit',compact('post','categories','selectedCategories'));
+        return view('backend.posts.edit',compact('post','categories','selectedCategories','image'));
     }
     public function update($id,PostEditFormRequest $request){
+
         $post = Post::whereId($id)->firstOrFail();
         $post->title = $request->get('title');
         $post->content = $request->get('content');
         $post->slug = Str::slug($request->get('title','-'));
 
-        $post->save();
+        if(isset(  $request->image )){
+
+            $post->image()->delete();
+
+            $img_name = $request->image->getClientOriginalName();
+            $img_url = "images\\".$request->image->getClientOriginalName();
+            $file = $request->image->storeAs('images', $img_name);
+            $post->save();
+
+
+            $image= new Image(
+                array(
+                    'name' => $img_name,
+                    'url' => $img_url,
+                )
+            );
+            $post->image()->save($image);
+        }
+        
+
         $post->categories()->sync($request->get('categories'));
 
         return redirect(action('Admin\PostsController@edit',$post->id))

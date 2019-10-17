@@ -22,15 +22,15 @@
                 <label for="email" class="">Titulo</label>
 
                 <div class="col-md-6  p-0">
-                    <input  id="email" class="form-control" name="title" >
+                    <input  id="email" class="form-control" name="title"  value="{{ old('title') }}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="content" class="">Conteudo</label>
 
                 <div class="col-md-12  p-0">
-                    <textarea id="content"   class="form-control" row="3" name="content" >
-                       
+                    <textarea id="content"   class="form-control" row="3" name="content"  >
+                      {{ old('content') }}
                     </textarea>
                 </div>
             </div>

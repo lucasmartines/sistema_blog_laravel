@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
        <div class=" col-md-8 col-sm-12 order-1 order-lg-0 order-md-0">
-            <h2>Todos os Posts</h2>
+            <h2 class="my-sm-3 my-3 my-lg-0" >Todos os Posts</h2>
             <div class=" p-0">
                 @if(session('status'))
                     <div class="alert alert-success">
@@ -58,6 +58,12 @@
                         <div class="md-form mt-0 w-100">
                           <input class="form-control w-100" name="search" placeholder="Buscar um post" aria-label="Search">
                         </div>
+                        <div class="my-3">
+                            @if( Auth::check() )
+                                <a href="{{action('Admin\PostsController@create')}}">Criar um Post</a>
+                            @endif
+                        </div>
+                        
                     </form>
                 </div>
             </div>
@@ -65,7 +71,8 @@
         </aside>
     </div>
 </div>
-@if( isset($posts->links ) )
-    {{ $posts->links() }}
-@endif
+    @if( !is_null( $posts->links() ) )
+        {{ $posts->links() }}
+ 
+    @endif
 @endsection
