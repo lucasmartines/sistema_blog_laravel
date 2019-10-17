@@ -6,7 +6,13 @@
 <div class="container">
     <div class="row">
        <div class=" col-md-8 col-sm-12 order-1 order-lg-0 order-md-0">
+        @if( empty( $_search ))    
             <h2 class="my-sm-3 my-3 my-lg-0" >Todos os Posts</h2>
+        @else
+            <h2 class="my-sm-3 my-3 my-lg-0" >Busca por: {{$_search}}</h2>
+            <a href="{{action('BlogController@index')}}">Voltar</a>
+        @endif
+            
             <div class=" p-0">
                 @if(session('status'))
                     <div class="alert alert-success">
@@ -52,27 +58,29 @@
                 </div>
                 <div class="card-body">
                     
-                    <form class="form-inline" method="post" action="/blog/search">
+                    <form   method="post" action="/blog/search">
                         <!-- Search form -->
                         @csrf
-                        <div class="md-form mt-0 w-100">
-                          <input class="form-control w-100" name="search" placeholder="Buscar um post" aria-label="Search">
+                        <div class="md-form mt-0  w-100">
+                          <input type="search" style="position:relative;" class="form-control w-100 " name="search" placeholder="Buscar um post"  >
                         </div>
-                        <div class="my-3">
-                            @if( Auth::check() )
-                                <a href="{{action('Admin\PostsController@create')}}">Criar um Post</a>
-                            @endif
-                        </div>
-                        
+                        <br>
                     </form>
+                    <div class="my-3">
+                        @if( Auth::check() )
+                            <a href="{{action('Admin\PostsController@create')}}">Criar um Post</a>
+                        @endif
+                    </div>
                 </div>
             </div>
             
         </aside>
     </div>
 </div>
-    @if( !is_null( $posts->links() ) )
-        {{ $posts->links() }}
- 
-    @endif
+
+@if( $posts  instanceof \Illuminate\Pagination\LengthAwarePaginator )
+    {{ $posts->links() }}
+@endif
+
+
 @endsection

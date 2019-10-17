@@ -22,13 +22,17 @@ class BlogController extends Controller
         return view('blog.show',compact('post','image'));
     }
     public function search(  Request $search){
-        $s = $search->input('search');
+        $_search = $search->input('search');
+
+        if( empty ( $_search) ){
+            return redirect(action('BlogController@index'));
+        }
       //  echo $s;
-        $posts= Post::where('title', 'LIKE', "%$s%" )->get();
+        $posts= Post::where('title', 'LIKE', "%$_search%" )->get();
         //dd($search->input('search'));
 
 //dd($posts);
-        return view('blog.index',compact('posts'));
+        return view('blog.index',compact('posts','_search'));
 
     }
 }
