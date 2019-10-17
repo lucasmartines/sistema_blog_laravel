@@ -14,14 +14,20 @@
  
 Auth::routes();
 
-Route::get('/', function(){
-    return view('welcome');
+Route::get('/',function(){
+    return redirect('/blog');
 });
+
+Route::get('/sobre', function(){
+    return view('welcome');
+})->name('sobre');
+
 Route::get('/user', 'HomeController@index');
 
 /**ROTAS blog */
 Route::get('/blog','BlogController@index')->name("blog");
 Route::get('/blog/{slug?}','BlogController@show');
+Route::post('/blog/search','BlogController@search');
 
 
 Route::group(['middleware'=>['auth']],function(){

@@ -52,3 +52,9 @@ li,ul{
 main .container{
     padding-top: 60px;
 }
+.pagination{
+    justify-content: center;
+}
+main .container{
+    min-height: calc( 100vh - 48px - 60px );
+}

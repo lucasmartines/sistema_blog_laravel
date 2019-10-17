@@ -11,7 +11,8 @@ class BlogController extends Controller
 {
     //
     public function index(){
-        $posts= Post::all();
+        $posts= Post::orderBy('created_at','desc')->paginate(4);
+                    
         return view('blog.index',compact('posts'));
     }
     public function show($slug){
@@ -20,4 +21,15 @@ class BlogController extends Controller
         //dd($image);
         return view('blog.show',compact('post','image'));
     }
+    public function search(  Request $search){
+        $s = $search->input('search');
+      //  echo $s;
+        $posts= Post::where('title', 'LIKE', "%$s%" )->get();
+        //dd($search->input('search'));
+
+//dd($posts);
+        return view('blog.index',compact('posts'));
+
+    }
 }
+
