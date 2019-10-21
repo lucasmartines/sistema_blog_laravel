@@ -26,8 +26,9 @@
 
 
 <!-- formulario comentario -->
-@if( Auth::user() )
+
 <div class="container col-md-8 shadow p-3">
+@if( Auth::user() )
     <form action="/comment" method="post" class=" ">
         @foreach($errors->all() as $error)
             <p class="alert alert-danger">{{$error}}</p>
@@ -71,6 +72,12 @@
             Comentarios
         </b>
     </h5>
+@else
+<div class=" col-md-8">
+    <h3 class="py-3"> Faça o  <a href="{{url('login')}}">Login</a> para comentar!</h3>
+   
+</div>
+@endif
     <!-- comentarios -->
     @foreach($comments as $comment)
         <p> Data: {!! $comment->updated_at !!}
@@ -79,12 +86,7 @@
         <hr>
     @endforeach
 </div>
-@else
-<div class="container col-md-8">
-    <h3> Faça o  <a href="{{url('login')}}">Login</a> para comentar!</h3>
-   
-</div>
-@endif
+
 <!-- comentarios -->
 
 @endsection
