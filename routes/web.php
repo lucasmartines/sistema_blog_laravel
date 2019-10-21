@@ -41,7 +41,11 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/home', function(){
         return redirect('/');
     });
+    
 
+    /**rota de comentarios */
+
+    Route::post("/comment","CommentsController@AddComment");
 
     /* admin area */
     Route::group(['middleware'=>['admin']],function()

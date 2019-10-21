@@ -27,8 +27,8 @@
 
 <!-- formulario comentario -->
 @if( Auth::user() )
-<div class="container col-md-8 ">
-    <form action="/coment" method="post" class="shadow p-3 ">
+<div class="container col-md-8 shadow p-3">
+    <form action="/comment" method="post" class=" ">
         @foreach($errors->all() as $error)
             <p class="alert alert-danger">{{$error}}</p>
         @endforeach
@@ -38,9 +38,9 @@
             </div>
         @endif
         @csrf
-        <input type="hidden" name="post_id">
+        <input type="hidden" name="post_id" value="{!! $post->id !!}">
         <input type="hidden" name="post_type" value="App\Post">
-
+        <input type="hidden" name="user_id" value="{!! Auth::id() !!}">
         <fieldset class="">
             <legend>
             Comentar
@@ -49,8 +49,7 @@
                     <label for="content" class="">Comentario</label>
 
                     <div class="col-md-8  p-0">
-                        <textarea row="3" id="content" class="form-control" name="content" >
-                        </textarea>
+                        <textarea row="3" id="content" class="form-control" name="comment" ></textarea>
                     </div>
                 </div>
             <div class="form-group">
@@ -67,7 +66,18 @@
             </div>
         </fieldset>
     </form>
-
+    <h5> 
+        <b>
+            Comentarios
+        </b>
+    </h5>
+    <!-- comentarios -->
+    @foreach($comments as $comment)
+        <p> Data: {!! $comment->updated_at !!}
+        <p> Usuario: <b> {!! $comment->user->name !!} </b></p>
+        <p> Comentario:  {!! $comment->comment !!} </p>
+        <hr>
+    @endforeach
 </div>
 @else
 <div class="container col-md-8">
@@ -76,10 +86,5 @@
 </div>
 @endif
 <!-- comentarios -->
-<div class="container col-md-8">
-    <div class="  p-3">
-        <h5>Outros Comentarios</h5>
 
-    </div>
-</div>
 @endsection

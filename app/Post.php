@@ -17,4 +17,7 @@ class Post extends Model
     public function image(){
         return $this->hasOne('App\Image');
     }
+    public function comments(){
+        return $this->hasMany("App\Comment");
+    }
 }

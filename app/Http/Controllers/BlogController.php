@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Image;
-
+use App\Comment;
 
 class BlogController extends Controller
 {
@@ -18,8 +18,12 @@ class BlogController extends Controller
     public function show($slug){
         $post = Post::whereSlug($slug)->firstOrFail();
         $image = $post->image;
-        //dd($image);
-        return view('blog.show',compact('post','image'));
+
+        $comments = $post->comments->reverse();
+        
+        
+
+        return view('blog.show',compact('post','image','comments'));
     }
     public function search(  Request $search){
         $_search = $search->input('search');
@@ -27,11 +31,9 @@ class BlogController extends Controller
         if( empty ( $_search) ){
             return redirect(action('BlogController@index'));
         }
-      //  echo $s;
-        $posts= Post::where('title', 'LIKE', "%$_search%" )->get();
-        //dd($search->input('search'));
 
-//dd($posts);
+        $posts = Post::where('title', 'LIKE', "%$_search%" )->get();
+
         return view('blog.index',compact('posts','_search'));
 
     }
