@@ -35,7 +35,7 @@
                                         <a href="{{action('BlogController@show',$post->slug)}}">{{$post->title}}</a>
                                     </h3>
                                     <p> Data de publicação: {{date("d/m/Y", strtotime( $post->created_at) )}}</p>
-                                    <p>{{mb_substr($post->content,0,300)}}...</p>
+                                    <p>{{mb_substr( strip_tags($post->content),0,200 )}}...</p>
                                     <div class="div text-right">
                                         @if( Auth::check() )
                                             <a href="{{action('Admin\PostsController@edit',$post->id)}}" >Editar Post</a>

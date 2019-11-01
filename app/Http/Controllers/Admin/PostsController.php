@@ -92,6 +92,8 @@ class PostsController extends Controller
         $post = Post::whereId($id)->firstOrFail();
         $post->title = $request->get('title');
         $post->content = $request->get('content');
+
+        //dd($request->content);
         $post->slug = Str::slug($request->get('title','-'));
 
         if(isset(  $request->image )){
@@ -101,7 +103,7 @@ class PostsController extends Controller
             $img_name = $request->image->getClientOriginalName();
             $img_url = "images\\".$request->image->getClientOriginalName();
             $file = $request->image->storeAs('images', $img_name);
-            $post->save();
+           
 
 
             $image= new Image(
@@ -113,7 +115,7 @@ class PostsController extends Controller
             $post->image()->save($image);
         }
         
-
+        $post->save();
         $post->categories()->sync($request->get('categories'));
 
         return redirect(action('Admin\PostsController@edit',$post->id))

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title','Todos os usuarios')
 
+@section('header')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+@endsection
 
 @section('content')
 <div class="container col-md-8">
@@ -22,19 +25,17 @@
                 <label for="email" class="">Titulo</label>
 
                 <div class="col-md-6  p-0">
-                    <input value="{{ $post->title }}" id="email" class="form-control" name="title"  value="{{ old('title') }}  >
+                    <input value="{{ $post->title }}" id="email" class="form-control" name="title"  value="{{ old('title') }}"  >
                 </div>
             </div>
             <div class="form-group">
                 <label for="content" class="">Conteudo</label>
 
                 <div class="col-md-12  p-0">
-                    <textarea id="content"   class="form-control" row="3" name="content"  >
-                       {{$post->content}}
+                    <textarea id="content"   class="form-control" row="3" name="content"  >{{$post->content}}
                        @if( !isset($post->content))
                             {{ old('content') }}
-                       @endif
-                    </textarea>
+                       @endif</textarea>
                 </div>
             </div>
             <!-- modificar categorias -->
@@ -88,4 +89,20 @@
     </form>
 </div>
 </div>
+@endsection
+
+
+
+@section('script')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+
+    <script>
+    $('#content').summernote({
+            placeholder: 'Your Post',
+            tabsize: 2,
+            height: 100
+    });
+    </script>
+    
 @endsection

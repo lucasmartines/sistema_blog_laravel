@@ -17,9 +17,9 @@
         
         <h1 class="text-center"> {{$post->title}}</h1>
         <hr>
-        <p class="blog_text  mx-auto" style="max-width:550px;font-size:1.2em;line-height:1.7em">
-            {{$post->content}}
-        </p>
+        <div id="post" class="blog_text  mx-auto" style="max-width:550px;font-size:1.2em;line-height:1.7em">
+ 
+        </div>
 
     </div>
 </div>
@@ -89,4 +89,16 @@
 
 <!-- comentarios -->
 
+@endsection
+
+@section('script')
+<script>
+    let item = $('#post');
+
+    item.append( `
+        @php
+            echo $post->content
+        @endphp
+    ` );
+</script>
 @endsection
