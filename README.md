@@ -5,7 +5,7 @@ width="100%"
 height="auto" />
 ## Editor
 <img 
-src="https://yasmmq.ch.files.1drv.com/y4mrl6zMrW_xHUGZMQko25lKkYcxihNYvp-HGnfhcsmov9Kfof3yqllRt6rYTOY7G1WS3B9UKFm25r33ZY2NNzNckzzOuIVQvYuvNWtkDvKeL8lrEQx5hYeAGmEERKGPFoKo3QUysZCd_gwVjI2PxFquLeIv9kNtuCw96n3PVu5L9WlQ6TPCJ-Oam0pY_l2JOdHX8zl0DnC6vw_cPIlUIQlMw?width=1351&height=572&cropmode=none" width="80%" height="auto" />
+src="https://yasmmq.ch.files.1drv.com/y4mrl6zMrW_xHUGZMQko25lKkYcxihNYvp-HGnfhcsmov9Kfof3yqllRt6rYTOY7G1WS3B9UKFm25r33ZY2NNzNckzzOuIVQvYuvNWtkDvKeL8lrEQx5hYeAGmEERKGPFoKo3QUysZCd_gwVjI2PxFquLeIv9kNtuCw96n3PVu5L9WlQ6TPCJ-Oam0pY_l2JOdHX8zl0DnC6vw_cPIlUIQlMw?width=1351&height=572&cropmode=none" width="100%" height="auto" />
 
 ## Tecnologias 
 Nessa aplicação foi utilizado o eloquent, laravel, validação de formulário backend, postagem de imagens, busca, sistema de edição WYSIWYG, etc.
